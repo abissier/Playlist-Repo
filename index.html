@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <title>Playlist Generator</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://www.jsdelivr.com/package/npm/bulma" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Sansita+Swashed:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--page title-->
+    <header>
+        <h1>Music Machine</h1>
+    </header>
+    <!--box below header that contains:-->
+    <section>
+        <!--search field box on left side of screen-->
+        <div class="search-field">
+            <div class="search-bar">
+                <h2>Generate Playlist</h2>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <div class="select is-info is-rounded">
+                        <select>
+                            <option>Select Genre</option>
+                            <option>Classical</option>
+                            <option>Country</option>
+                            <option>Funk</option>
+                            <option>Hip Hop</option>
+                            <option>Indie</option>
+                            <option>Jazz</option>
+                            <option>K-Pop</option>
+                            <option>Metal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control">
+                    <div class="select is-info is-rounded">
+                        <select>
+                            <option>Search by Beats</option>
+                            <option>None</option>
+                            <option>Mild</option>
+                            <option>Many</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control">
+                    <input class="input is-rounded" type="text" name="artist" placeholder="Search by Artist">
+                </div>
+                <div class="control">
+                    <input class="input is-rounded" type="text" name="number-songs" placeholder="# of songs">
+                </div>
+                <!--this class gets popularity rating-->
+                <div class="slidecontainer control"><label for="slider">Popularity Rating</label>
+                    <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                </div>
+                <!--Clear and Search buttons-->
+                <div class="buttons">
+                    <button class="button is-rounded"><i class="far fa-trash-alt"></i></button>
+                    <button class="button is-rounded"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <!--and box to hold:-->
+        <div class="output-field">
+            <!--lyrics box-->
+            <div class="lyrics-box">
+                <h2>Lyrics</h2>
+                <div class="lyrics box"></div>
+            </div>
+            <!--and playlist box-->
+            <div class="spotify-playlist">
+                <h2>Spotify Playlist</h2>
+                <div class="spotify-playlist-content">
+                    <ul>
+                        <li>ex song 1</li>
+                        <li>ex song 2</li>
+                        <li>ex song 3</li>
+                        <li>ex song 4</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</body>
+
+</html>

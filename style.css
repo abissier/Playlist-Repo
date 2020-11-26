@@ -1,0 +1,135 @@
+:root {
+    --bodyFont: 'Libre Baskerville', serif;
+    --headingFont: 'Sansita Swashed', cursive;
+}
+body {
+ background: rgb(34,193,195);
+ background: linear-gradient(225deg, rgba(34,193,195,1) 0%, rgba(38,70,83,1) 100%);
+ color: white;
+}
+
+h2 {
+ font-family: var(--bodyFont);
+}
+
+header {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding: 5px;
+ margin: 5px;
+ font-family: var(--headingFont);
+ font-size: 35px;
+}
+
+section {
+ display: flex;
+ flex-direction: row;
+ height: 1500px;
+ width: 100%;
+}
+
+.search-field {
+ height: 40%;
+ width: 20%;
+ margin: 20px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ border-radius: 10px;
+ border: 5px solid #E9C46A;
+ box-shadow: 5px 10px #F4A261;
+}
+
+.control {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ margin: 5px;
+ font-family: var(--bodyFont);
+}
+
+select, 
+.input {
+ height: 40px;
+ width: 250px;
+ border-radius: 10px;
+ margin: 5px;
+ opacity: 0.8;
+ font-family: var(--bodyFont);
+}
+
+.slider {
+ -webkit-appearance: none;
+ width: 90%;
+ height: 15px;
+ margin: 10px;
+ border-radius: 5px;
+ outline: none;
+ opacity: 0.7;
+ -webkit-transition: .2s;
+ transition: opacity .2s;
+}
+     
+.slider:hover {
+ opacity: 1;
+}
+     
+.slider::-webkit-slider-thumb {
+ -webkit-appearance: none;
+ appearance: none;
+ width: 25px;
+ height: 25px;
+ border-radius: 50%;
+ background: #E9C46A;
+ cursor: pointer;
+}
+
+.buttons {
+ display: flex;
+ justify-content: space-around;
+}
+
+.button {
+ height: 40px;
+ width: 80px;
+ background-color: #E9C46A;
+ border-radius: 5px;
+}
+
+.output-field {
+ height: 70%;
+ width: 70%;
+ display: flex;
+ flex-direction: column;
+ padding: 10px;
+ margin-left: 50px;
+}
+
+.lyrics-box {
+ height: 30%;
+ padding: 10px;
+ margin: 20px;
+ border-radius: 10px;
+ border: 5px solid #E9C46A;
+ box-shadow: 5px 10px #F4A261;
+}
+
+.spotify-playlist {
+ height: 50%;
+ display: flex;
+ flex-direction: column;
+ padding: 10px;
+ margin: 20px;
+ border-radius: 10px;
+ border: 5px solid #E9C46A;
+ box-shadow: 5px 10px #F4A261;
+}
+
+.spotify-playlist-content ul{
+ padding: 10px;
+ margin: 10px;
+ list-style: none;
+}
+
+  
