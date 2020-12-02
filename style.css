@@ -115,7 +115,7 @@ select,
  box-shadow: 5px 10px #F4A261;
 }
 
-.spotify-playlist {
+.playlist {
  height: 50%;
  display: flex;
  flex-direction: column;
@@ -126,10 +126,35 @@ select,
  box-shadow: 5px 10px #F4A261;
 }
 
-.spotify-playlist-content ul{
+.playlist-content ul{
  padding: 10px;
  margin: 10px;
  list-style: none;
 }
 
-  
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+   * {
+       margin: 2px;
+   }
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+       }
+
+    .output-field,
+    .search-field,
+    .lyrics-box,
+    .playlist {
+        width: 70%;
+        height: auto;
+        border: none;
+        box-shadow: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+  }
+}
