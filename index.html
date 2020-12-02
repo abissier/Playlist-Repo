@@ -30,39 +30,13 @@
             </div>
             <div class="field">
                 <div class="control">
-                    <div class="select is-info is-rounded">
-                        <select>
-                            <option>Select Genre</option>
-                            <option>Classical</option>
-                            <option>Country</option>
-                            <option>Funk</option>
-                            <option>Hip Hop</option>
-                            <option>Indie</option>
-                            <option>Jazz</option>
-                            <option>K-Pop</option>
-                            <option>Metal</option>
-                        </select>
-                    </div>
+                    <input class="input is-rounded" type="text" id="artist-1" name="artist" placeholder=" Search by Artist">
                 </div>
                 <div class="control">
-                    <div class="select is-info is-rounded">
-                        <select>
-                            <option>Search by Beats</option>
-                            <option>None</option>
-                            <option>Mild</option>
-                            <option>Many</option>
-                        </select>
-                    </div>
+                    <input class="input is-rounded" type="text" id="artist-2" name="artist" placeholder=" Add second artist (optional)">
                 </div>
                 <div class="control">
-                    <input class="input is-rounded" type="text" name="artist" placeholder="Search by Artist">
-                </div>
-                <div class="control">
-                    <input class="input is-rounded" type="text" name="number-songs" placeholder="# of songs">
-                </div>
-                <!--this class gets popularity rating-->
-                <div class="slidecontainer control"><label for="slider">Popularity Rating</label>
-                    <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+                    <input class="input is-rounded" type="text" id="artist-3" name="artist" placeholder=" Add third artist (optional)">
                 </div>
                 <!--Clear and Search buttons-->
                 <div class="buttons">
@@ -79,15 +53,12 @@
                 <div class="lyrics box"></div>
             </div>
             <!--and playlist box-->
-            <div class="spotify-playlist">
+            <div class="playlist">
                 <h2>Spotify Playlist</h2>
-                <div class="spotify-playlist-content">
-                    <ul>
-                        <li>ex song 1</li>
-                        <li>ex song 2</li>
-                        <li>ex song 3</li>
-                        <li>ex song 4</li>
-                    </ul>
+                <div class="playlist-content">
+                <div class="song-box" id="song-1"></div>
+                <div class="song-box" id="song-2"></div>
+                <div class="song-box" id="song-3"></div>
                 </div>
             </div>
         </div>
