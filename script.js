@@ -2,7 +2,7 @@
 
 //============ MusixMatch Info =================
 
-var songID = "15753433";
+var songID;
 var MusixMatchKey = "f87914fabf3b652d6e3500c66b6259d6";
 var MusixMatchURL = "https://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=" + MusixMatchKey + "&track_id=" + songID ;
 
@@ -30,22 +30,31 @@ const artistTwoUrl = 'theaudiodb.com/api/v1/json/1/searchalbum.php?s=' + secondA
 const artistThreeUrl ='theaudiodb.com/api/v1/json/1/searchalbum.php?s=' + thirdArtist
         
 //get artist #1
-const firstArtist = $(`#artist1`).val().trim()
+const firstArtist = $(`#artist-1`).val().trim()
 //get artist #2
-const secondArtist = $(`#artist2`).val().trim()
+const secondArtist = $(`#artist-2`).val().trim()
 //get artist #3
-const thirdArtist = $(`#artist3`).val().trim()
+const thirdArtist = $(`#artist-3`).val().trim()
 //array to hold all songs
 const playlist = []
             
 function submitInputs() {
-  $.ajax({
-    url: 
-    method:
-  }).then(function(artistsresponse) {
-    console.log(artistsresponse)
-    })
-  }
+  const settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://theaudiodb.p.rapidapi.com/searchtrack.php?t=trackname&s=artist",
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-key": "1eaefda46fmsh7f49637a27e8f45p19f2d6jsn2ebdbc6ee733",
+      "x-rapidapi-host": "theaudiodb.p.rapidapi.com"
+    }
+  };
+  
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
+
+}
         
 $(`#btnID`).on(click, function(e) {
   e.preventDefault()
