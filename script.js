@@ -35,7 +35,7 @@ const topSongsA1 = {
   
 	"async": true,
 	"crossDomain": true,
-	url: proxy + 'https://theaudiodb.com/api/v1/json/523532/track-top10.php?s=beyonce',
+	url: proxy + 'https://theaudiodb.com/api/v1/json/523532/track-top10.php?s=bonobo',
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "523532",
@@ -51,7 +51,7 @@ $.ajax(topSongsA1).done(function (response) {
 const discographyA1 = {
 	"async": true,
 	"crossDomain": true,
-	"url": proxy + "https://theaudiodb.com/api/v1/json/523532/discography.php?s=beyonce",
+	"url": proxy + "https://theaudiodb.com/api/v1/json/523532/discography.php?s=bonobo",
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "523532",
@@ -63,6 +63,15 @@ $.ajax(discographyA1).done(function (response) {
 	console.log(response);
 });
 
+const tracklist= $('#tracklist');
+const trackOne = document.createElement('li');
+const trackTwo = document.createElement('li');
+const trackThree = document.createElement('li');
+const trackFour = document.createElement('li');
+const trackFive = document.createElement('li');
+
+trackOne.innerHTML = topSongsA1.track[0].strAlbum
+//trackOne.setAttribute('href', discography.track[0].)
 
 // //Top Songs for artist 2
 // const topSongs = {
