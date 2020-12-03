@@ -31,7 +31,7 @@ $.ajax({
 const proxy = "https://cors-anywhere.herokuapp.com/"
 
 //Top Songs for artist 1
-const topSongsA1 = {
+const topSongs = {
   
 	"async": true,
 	"crossDomain": true,
@@ -43,12 +43,12 @@ const topSongsA1 = {
 	}
 };
 
-$.ajax(topSongsA1).done(function (response) {
+$.ajax(topSongs).done(function (response) {
 	console.log(response);
 });
 
 //Discography for artist 1
-const discographyA1 = {
+const discography = {
 	"async": true,
 	"crossDomain": true,
 	"url": proxy + "https://theaudiodb.com/api/v1/json/523532/discography.php?s=bonobo",
@@ -59,10 +59,12 @@ const discographyA1 = {
 	}
 };
 
-$.ajax(discographyA1).done(function (response) {
+$.ajax(discography).done(function (response) {
 	console.log(response);
 });
 
+
+//creating LI elements
 const tracklist= $('#tracklist');
 const trackOne = document.createElement('li');
 const trackTwo = document.createElement('li');
@@ -70,60 +72,19 @@ const trackThree = document.createElement('li');
 const trackFour = document.createElement('li');
 const trackFive = document.createElement('li');
 
-trackOne.innerHTML = topSongsA1.track[0].strAlbum
+//appending LI elements to UL
+tracklist.append(trackOne)
+tracklist.append(trackTwo)
+tracklist.append(trackTwo)
+
+//trackOne.innerHTML = topSongsA1.track[0].strAlbum
 //trackOne.setAttribute('href', discography.track[0].)
 
-// //Top Songs for artist 2
-// const topSongs = {
-// 	"async": true,
-// 	"crossDomain": true,
-// 	"url": "https://theaudiodb.com/api/v1/json/523532/track-top10.php?s=coldplay",
-// 	"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-key": "523532",
-// 		"x-rapidapi-host": "theaudiodb.p.rapidapi.com"
-// 	}
-// };
-
-// $.ajax(topSongs).done(function (response) {
-// 	console.log(response);
-// });
-
-// //Discography for artist 2
-// const discography = {
-// 	"async": true,
-// 	"crossDomain": true,
-// 	"url": "https://theaudiodb.com/api/v1/json/523532/discography.php?s=beyonce",
-// 	"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-key": "523532",
-// 		"x-rapidapi-host": "theaudiodb.p.rapidapi.com"
-// 	}
-// };
-
-// $.ajax(discography).done(function (response) {
-// 	console.log(response);
-// });
 
 
-
-
-
-//get users 3 favorite artists
-
-//returns track details from artists 	searchtrack.php?s={Artist_Name}&t={Single_Name}
 //get artist #1
 const firstArtist = $(`#artist-1`).val().trim()
-//get artist #2
-const secondArtist = $(`#artist-2`).val().trim()
-//get artist #3
-const thirdArtist = $(`#artist-3`).val().trim()
-//array to hold all songs
-const playlist = []
 
-const artistOneUrl = 'theaudiodb.com/api/v1/json/1/searchalbum.php?s=' + firstArtist
-const artistTwoUrl = 'theaudiodb.com/api/v1/json/1/searchalbum.php?s=' + secondArtist
-const artistThreeUrl ='theaudiodb.com/api/v1/json/1/searchalbum.php?s=' + thirdArtist
         
 
 
