@@ -28,6 +28,77 @@ $.ajax({
 
 
 //==========================  The SongDB  ==============================
+const proxy = "https://cors-anywhere.herokuapp.com/"
+
+//Top Songs for artist 1
+const topSongsA1 = {
+  
+	"async": true,
+	"crossDomain": true,
+	url: proxy + 'https://theaudiodb.com/api/v1/json/523532/track-top10.php?s=beyonce',
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "523532",
+		"x-rapidapi-host": "theaudiodb.p.rapidapi.com"
+	}
+};
+
+$.ajax(topSongsA1).done(function (response) {
+	console.log(response);
+});
+
+//Discography for artist 1
+const discographyA1 = {
+	"async": true,
+	"crossDomain": true,
+	"url": proxy + "https://theaudiodb.com/api/v1/json/523532/discography.php?s=beyonce",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "523532",
+		"x-rapidapi-host": "theaudiodb.p.rapidapi.com"
+	}
+};
+
+$.ajax(discographyA1).done(function (response) {
+	console.log(response);
+});
+
+
+// //Top Songs for artist 2
+// const topSongs = {
+// 	"async": true,
+// 	"crossDomain": true,
+// 	"url": "https://theaudiodb.com/api/v1/json/523532/track-top10.php?s=coldplay",
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-key": "523532",
+// 		"x-rapidapi-host": "theaudiodb.p.rapidapi.com"
+// 	}
+// };
+
+// $.ajax(topSongs).done(function (response) {
+// 	console.log(response);
+// });
+
+// //Discography for artist 2
+// const discography = {
+// 	"async": true,
+// 	"crossDomain": true,
+// 	"url": "https://theaudiodb.com/api/v1/json/523532/discography.php?s=beyonce",
+// 	"method": "GET",
+// 	"headers": {
+// 		"x-rapidapi-key": "523532",
+// 		"x-rapidapi-host": "theaudiodb.p.rapidapi.com"
+// 	}
+// };
+
+// $.ajax(discography).done(function (response) {
+// 	console.log(response);
+// });
+
+
+
+
 
 //get users 3 favorite artists
 
@@ -46,32 +117,15 @@ const artistTwoUrl = 'theaudiodb.com/api/v1/json/1/searchalbum.php?s=' + secondA
 const artistThreeUrl ='theaudiodb.com/api/v1/json/1/searchalbum.php?s=' + thirdArtist
         
 
-            
-function submitInputs() {
-  const settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://theaudiodb.p.rapidapi.com/searchtrack.php?t=yellow&s=coldplay",
-    "method": "GET",
-    "headers": {
-      "x-rapidapi-key": "1eaefda46fmsh7f49637a27e8f45p19f2d6jsn2ebdbc6ee733",
-      "x-rapidapi-host": "theaudiodb.p.rapidapi.com"
-    }
-  };
-  
-  $.ajax(settings).done(function (response) {
-    console.log(response);
-  });
 
-}
         
-$(`#btn`).on('click', function(e) {
-  e.preventDefault()
-  submitInputs()
+// $(`#btn`).on('click', function(e) {
+//   e.preventDefault()
+//   submitInputs()
   //get 3 songs fronm each playlist
   //add these three to an array
   //playlist.push()
   //$(`#Id`).innerHTML = playlist
                 
-})
+
         
