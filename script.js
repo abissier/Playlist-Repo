@@ -1,7 +1,21 @@
 
 //============ MusixMatch Info =================
 
-var songID;
+var lyricDis = document.getElementById("lyricDisplay");
+
+
+//=========== click event pulls song ID and pushes data to next function ==============
+$(".tracks").click(function() {
+    var songID = event.target.id;
+    displaySongLyrics(songID); 
+})
+
+
+
+
+//======= runs API request to pull lyrics==================
+function displaySongLyrics(songID) {
+
 var MusixMatchKey = "f87914fabf3b652d6e3500c66b6259d6";
 var MusixMatchURL = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=f87914fabf3b652d6e3500c66b6259d6&track_id=" + songID;
 
@@ -17,13 +31,24 @@ $.ajax({
     dataType: "jsonp",
     jsonpCallback: 'jsonp_callback',
     contentType: 'application/json',
-}).then(function (LyricsResponse) {
-    console.log(LyricsResponse);
-});
-
-//=======================================================================
 
 
+    }).then(function(LyricsResponse){
+       //========pulls current song lyrics and displays to page =======
+         var lyricText = LyricsResponse.message.body.lyrics.lyrics_body;
+          var trimmedText = lyricText.slice(0, -70);
+          console.log(trimmedText);
+         var currentSongLyrics = document.createElement("p");
+         currentSongLyrics.innerHTML = trimmedText;
+         lyricDis.append(currentSongLyrics);
+
+         //======== appends a copyright disclaimer ================
+         var disclaimer = document.createElement("span");
+         disclaimer.innerHTML = "******* This Lyrics is NOT for Commercial use ******* "
+         lyricDis.append(disclaimer);
+         
+    });    
+}
 
 
 //==========================  The SongDB  ==============================
@@ -70,13 +95,18 @@ $.ajax(discography).done(function (response) {
 });
 
 
-//creating LI elements
-const tracklist = $('#tracklist');
-const trackOne = document.createElement('li');
-const trackTwo = document.createElement('li');
-const trackThree = document.createElement('li');
-const trackFour = document.createElement('li');
-const trackFive = document.createElement('li');
+const tracklist= $('#tracklist');
+const trackOne = document.createElement('p');
+trackOne.classList.add("tracks");
+const trackTwo = document.createElement('p');
+trackTwo.classList.add("tracks");
+const trackThree = document.createElement('p');
+trackThree.classList.add("tracks");
+const trackFour = document.createElement('p');
+trackFour.classList.add("tracks");
+const trackFive = document.createElement('p');
+trackFive.classList.add("tracks");
+
 
 
 //appending LI elements to UL
