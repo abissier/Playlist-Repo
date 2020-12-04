@@ -54,10 +54,10 @@ $.ajax(topSongs).done(function (responseOne) {
     
     
     trackOne.setAttribute('id', responseOne.track[0].idTrack)
-    trackTwo.setAttribute('id', responseOne.track[0].idTrack)
-    trackThree.setAttribute('id', responseOne.track[0].idTrack)
-    trackFour.setAttribute('id', responseOne.track[0].idTrack)
-    trackFive.setAttribute('id', responseOne.track[0].idTrack)
+    trackTwo.setAttribute('id', responseOne.track[1].idTrack)
+    trackThree.setAttribute('id', responseOne.track[2].idTrack)
+    trackFour.setAttribute('id', responseOne.track[3].idTrack)
+    trackFive.setAttribute('id', responseOne.track[4].idTrack)
 
     
 });
@@ -90,19 +90,12 @@ const trackFour = document.createElement('li');
 const trackFive = document.createElement('li');
 
 
-
-
 //appending LI elements to UL
 tracklist.append(trackOne)
 tracklist.append(trackTwo)
 tracklist.append(trackThree)
 tracklist.append(trackFour)
 tracklist.append(trackFive)
-
-
-
-
-
 
 
 //get artist #1
