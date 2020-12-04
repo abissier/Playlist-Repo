@@ -30,12 +30,14 @@ $.ajax({
 //==========================  The SongDB  ==============================
 const proxy = "https://cors-anywhere.herokuapp.com/"
 
-//Top Songs for artist 1
+//get artist #1
+const firstArtist = $(`#artist-1`).val().trim()
+
+//Top Songs for artist 
 const topSongs = {
-  
 	"async": true,
 	"crossDomain": true,
-	url: proxy + 'https://theaudiodb.com/api/v1/json/523532/track-top10.php?s=bonobo',
+	url: proxy + 'https://theaudiodb.com/api/v1/json/523532/track-top10.php?s=' + firstArtist,
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "523532",
@@ -57,16 +59,14 @@ $.ajax(topSongs).done(function (responseOne) {
     trackTwo.setAttribute('id', responseOne.track[1].idTrack)
     trackThree.setAttribute('id', responseOne.track[2].idTrack)
     trackFour.setAttribute('id', responseOne.track[3].idTrack)
-    trackFive.setAttribute('id', responseOne.track[4].idTrack)
-
-    
+    trackFive.setAttribute('id', responseOne.track[4].idTrack) 
 });
 
-//Discography for artist 1
+//Discography for artist 
 const discography = {
 	"async": true,
 	"crossDomain": true,
-	"url": proxy + "https://theaudiodb.com/api/v1/json/523532/discography.php?s=bonobo",
+	"url": proxy + "https://theaudiodb.com/api/v1/json/523532/discography.php?s=" + firstArtist,
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "523532",
@@ -76,8 +76,6 @@ const discography = {
 
 $.ajax(discography).done(function (response) {
     console.log(response);
-
-  
 });
 
 
@@ -97,21 +95,5 @@ tracklist.append(trackThree)
 tracklist.append(trackFour)
 tracklist.append(trackFive)
 
-
-//get artist #1
-const firstArtist = $(`#artist-1`).val().trim()
-
-        
-
-
-        
-// $(`#btn`).on('click', function(e) {
-//   e.preventDefault()
-//   submitInputs()
-  //get 3 songs fronm each playlist
-  //add these three to an array
-  //playlist.push()
-  //$(`#Id`).innerHTML = playlist
-                
 
         
