@@ -2,7 +2,8 @@
 
 //============ MusixMatch Info =================
 
-var songID;
+var lyricDis = document.getElementById("lyricDisplay");
+var songID = "15953433";
 var MusixMatchKey = "f87914fabf3b652d6e3500c66b6259d6";
 var MusixMatchURL = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=f87914fabf3b652d6e3500c66b6259d6&track_id=" + songID ;
 
@@ -19,7 +20,19 @@ $.ajax({
     jsonpCallback: 'jsonp_callback',
     contentType: 'application/json',
     }).then(function(LyricsResponse){
-        console.log(LyricsResponse); 
+       //========pulls current song lyrics and displays to page =======
+         var lyricText = LyricsResponse.message.body.lyrics.lyrics_body;
+          var trimmedText = lyricText.slice(0, -70);
+          console.log(trimmedText);
+         var currentSongLyrics = document.createElement("p");
+         currentSongLyrics.innerHTML = trimmedText;
+         lyricDis.append(currentSongLyrics);
+
+         //======== appends a copyright disclaimer ================
+         var disclaimer = document.createElement("span");
+         disclaimer.innerHTML = "******* This Lyrics is NOT for Commercial use ******* "
+         lyricDis.append(disclaimer);
+         
     });    
 
 //=======================================================================
