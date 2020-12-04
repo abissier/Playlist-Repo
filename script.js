@@ -3,7 +3,20 @@
 //============ MusixMatch Info =================
 
 var lyricDis = document.getElementById("lyricDisplay");
-var songID = "15953433";
+
+
+//=========== click event pulls song ID and pushes data to next function ==============
+$(".tracks").click(function() {
+    var songID = event.target.id;
+    displaySongLyrics(songID); 
+})
+
+
+
+
+//======= runs API request to pull lyrics==================
+function displaySongLyrics(songID) {
+
 var MusixMatchKey = "f87914fabf3b652d6e3500c66b6259d6";
 var MusixMatchURL = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=f87914fabf3b652d6e3500c66b6259d6&track_id=" + songID ;
 
@@ -34,7 +47,7 @@ $.ajax({
          lyricDis.append(disclaimer);
          
     });    
-
+}
 //=======================================================================
 
 
@@ -94,11 +107,16 @@ $.ajax(discography).done(function (response) {
 
 //creating LI elements
 const tracklist= $('#tracklist');
-const trackOne = document.createElement('li');
-const trackTwo = document.createElement('li');
-const trackThree = document.createElement('li');
-const trackFour = document.createElement('li');
-const trackFive = document.createElement('li');
+const trackOne = document.createElement('p');
+trackOne.classList.add("tracks");
+const trackTwo = document.createElement('p');
+trackTwo.classList.add("tracks");
+const trackThree = document.createElement('p');
+trackThree.classList.add("tracks");
+const trackFour = document.createElement('p');
+trackFour.classList.add("tracks");
+const trackFive = document.createElement('p');
+trackFive.classList.add("tracks");
 
 
 //appending LI elements to UL
