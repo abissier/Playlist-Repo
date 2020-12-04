@@ -43,8 +43,23 @@ const topSongs = {
 	}
 };
 
-$.ajax(topSongs).done(function (response) {
-	console.log(response);
+$.ajax(topSongs).done(function (responseOne) {
+    console.log(responseOne);
+
+    trackOne.innerHTML = responseOne.track[0].strTrack
+    trackTwo.innerHTML = responseOne.track[1].strTrack
+    trackThree.innerHTML = responseOne.track[2].strTrack
+    trackFour.innerHTML = responseOne.track[3].strTrack
+    trackFive.innerHTML = responseOne.track[4].strTrack
+    
+    
+    trackOne.setAttribute('id', responseOne.track[0].idTrack)
+    trackTwo.setAttribute('id', responseOne.track[0].idTrack)
+    trackThree.setAttribute('id', responseOne.track[0].idTrack)
+    trackFour.setAttribute('id', responseOne.track[0].idTrack)
+    trackFive.setAttribute('id', responseOne.track[0].idTrack)
+
+    
 });
 
 //Discography for artist 1
@@ -60,7 +75,9 @@ const discography = {
 };
 
 $.ajax(discography).done(function (response) {
-	console.log(response);
+    console.log(response);
+
+  
 });
 
 
@@ -72,13 +89,19 @@ const trackThree = document.createElement('li');
 const trackFour = document.createElement('li');
 const trackFive = document.createElement('li');
 
+
+
+
 //appending LI elements to UL
 tracklist.append(trackOne)
 tracklist.append(trackTwo)
-tracklist.append(trackTwo)
+tracklist.append(trackThree)
+tracklist.append(trackFour)
+tracklist.append(trackFive)
 
-//trackOne.innerHTML = topSongsA1.track[0].strAlbum
-//trackOne.setAttribute('href', discography.track[0].)
+
+
+
 
 
 
