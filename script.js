@@ -39,10 +39,15 @@ $.ajax({
 
     }).then(function(LyricsResponse){
        //========pulls current song lyrics and displays to page =======
-         var lyricText = LyricsResponse.message.body.lyrics.lyrics_body;
-         console.log(lyricText);
-          var trimmedText = lyricText.slice(0, -70);
-          console.log(trimmedText);
+        console.log(LyricsResponse.message.header.status_code); 
+         
+         if (LyricsResponse.message.header.status_code == 404) {
+             trimmedText = "No lyrics avalible"
+         } else {
+            var lyricText = LyricsResponse.message.body.lyrics.lyrics_body
+            var trimmedText = lyricText.slice(0, -70);
+            console.log(trimmedText);
+         }
          var currentSongLyrics = document.createElement("p");
          currentSongLyrics.innerHTML = trimmedText;
          lyricDis.append(currentSongLyrics);
@@ -50,8 +55,12 @@ $.ajax({
          //======== appends a copyright disclaimer ================
          var disclaimer = document.createElement("span");
          disclaimer.innerHTML = "******* This Lyrics is NOT for Commercial use *******"
+
+         if (LyricsResponse.message.header.status_code == 404) {
+            
+        } else {
          lyricDis.append(disclaimer);
-         
+         }
     });    
 }
 
