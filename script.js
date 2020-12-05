@@ -1,3 +1,5 @@
+//CORS proxy
+const proxy = "https://cors-anywhere.herokuapp.com/" 
 
 //============ MusixMatch Info =================
 
@@ -6,7 +8,7 @@ var lyricDis = document.getElementById("lyricDisplay");
 
 //=========== click event pulls song ID and pushes data to next function ==========
 
-$(".tracks").click(function() {
+$(".tracks").on("click", function() {
     var songID = event.target.id;
     $("lyricDisplay").empty();
     displaySongLyrics(songID); 
@@ -19,7 +21,7 @@ $(".tracks").click(function() {
 function displaySongLyrics(songID) {
 
 var MusixMatchKey = "f87914fabf3b652d6e3500c66b6259d6";
-var MusixMatchURL = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=f87914fabf3b652d6e3500c66b6259d6&track_id=" + songID;
+var MusixMatchURL = proxy + "https://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=f87914fabf3b652d6e3500c66b6259d6&track_id=" + songID;
 
 $.ajax({
     type: "GET",
@@ -46,7 +48,7 @@ $.ajax({
 
          //======== appends a copyright disclaimer ================
          var disclaimer = document.createElement("span");
-         disclaimer.innerHTML = "******* This Lyrics is NOT for Commercial use ******* "
+         disclaimer.innerHTML = "******* This Lyrics is NOT for Commercial use *******"
          lyricDis.append(disclaimer);
          
     });    
@@ -54,7 +56,7 @@ $.ajax({
 
 
 //==========================  The SongDB  ==============================
-const proxy = "https://cors-anywhere.herokuapp.com/"
+
 var topSongs = {};
 
 //get artist #1
@@ -80,7 +82,7 @@ function runQuery() {
         trackFive.setAttribute('id', responseOne.track[4].idTrack);
         
         
-        musicVideo.setAttribute('source', responseOne.track[0].strMusicVid)
+        musicVideo.setAttribute('source', responseOne.track[0].strMusicVid);
         musicVideo.setAttribute('width','300');
         musicVideo.setAttribute('height','200');
 
@@ -128,7 +130,7 @@ tracklist.append(trackFour)
 tracklist.append(trackFive)
 
 //append IFRAME element to trackFive
-musicVideo.append(trackFive)
+musicVideo.append($('#videoBox'));
 
 //search button
 $("#search-btn").on("click", function () {
