@@ -8,7 +8,7 @@ var lyricDis = document.getElementById("lyricDisplay");
 
 //=========== click event pulls song ID and pushes data to next function ==========
 
-$(".tracks").click(function() {
+$("#tracklist").on("click", ".tracks", function() {
     var songID = event.target.id;
     $("lyricDisplay").empty();
     displaySongLyrics(songID); 
