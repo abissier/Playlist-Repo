@@ -46,7 +46,7 @@ $.ajax({
 
          //======== appends a copyright disclaimer ================
          var disclaimer = document.createElement("span");
-         disclaimer.innerHTML = "******* This Lyrics is NOT for Commercial use ******* "
+         disclaimer.innerHTML = "******* This Lyrics is NOT for Commercial use *******"
          lyricDis.append(disclaimer);
          
     });    
@@ -134,4 +134,17 @@ $("#search-btn").on("click", function () {
         }
     };
     runQuery()
+});
+
+
+//=================== Delete button click-event =======================
+
+var Delete = document.getElementById("btn");
+console.log(Delete);
+
+Delete.addEventListener("click", function() {
+
+    $("lyricDisplay").empty();
+    $("tracklist").empty();
+    document.getElementById("artist-1").value = ""; 
 });
