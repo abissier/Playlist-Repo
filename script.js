@@ -85,6 +85,7 @@ function runQuery() {
         musicVideo.setAttribute('height','200');
 
 });
+}
 //Discography for artist 
 const discography = {
     "async": true,
@@ -115,7 +116,7 @@ const trackFive = document.createElement('p');
 trackFive.classList.add("tracks");
 
 //create element to hold music video
-const musicVideo = document.createElement('iframe')
+const musicVideo = document.createElement('iframe');
 
 
 
@@ -145,4 +146,4 @@ $("#search-btn").on("click", function () {
         }
     };
     runQuery()
-})
+});
