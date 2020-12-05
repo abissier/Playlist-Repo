@@ -1,3 +1,5 @@
+//CORS proxy
+const proxy = "https://cors-anywhere.herokuapp.com/" 
 
 //============ MusixMatch Info =================
 
@@ -19,7 +21,7 @@ $(".tracks").click(function() {
 function displaySongLyrics(songID) {
 
 var MusixMatchKey = "f87914fabf3b652d6e3500c66b6259d6";
-var MusixMatchURL = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=f87914fabf3b652d6e3500c66b6259d6&track_id=" + songID;
+var MusixMatchURL = proxy + "https://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=f87914fabf3b652d6e3500c66b6259d6&track_id=" + songID;
 
 $.ajax({
     type: "GET",
@@ -54,7 +56,7 @@ $.ajax({
 
 
 //==========================  The SongDB  ==============================
-const proxy = "https://cors-anywhere.herokuapp.com/"
+
 var topSongs = {};
 
 //get artist #1
@@ -80,11 +82,12 @@ function runQuery() {
         trackFive.setAttribute('id', responseOne.track[4].idTrack);
         
         
-        musicVideo.setAttribute('source', responseOne.track[0].strMusicVid)
+        musicVideo.setAttribute('source', responseOne.track[0].strMusicVid);
         musicVideo.setAttribute('width','300');
         musicVideo.setAttribute('height','200');
 
 });
+}
 //Discography for artist 
 const discography = {
     "async": true,
@@ -115,7 +118,7 @@ const trackFive = document.createElement('p');
 trackFive.classList.add("tracks");
 
 //create element to hold music video
-const musicVideo = document.createElement('iframe')
+const musicVideo = document.createElement('iframe');
 
 
 
@@ -127,7 +130,7 @@ tracklist.append(trackFour)
 tracklist.append(trackFive)
 
 //append IFRAME element to trackFive
-musicVideo.append(trackFive)
+musicVideo.append($('#videoBox'));
 
 //search button
 $("#search-btn").on("click", function () {
@@ -145,4 +148,4 @@ $("#search-btn").on("click", function () {
         }
     };
     runQuery()
-})
+});
