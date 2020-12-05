@@ -79,10 +79,10 @@ function runQuery() {
         
         
         musicVideo.setAttribute('source', responseOne.track[0].strMusicVid)
-        musicVideo.setAttribute('width', '300')
-        musicVideo.setAttribute('height' '200')
+        musicVideo.setAttribute('width','300');
+        musicVideo.setAttribute('height','200');
 
-};
+});
 //Discography for artist 
 const discography = {
     "async": true,
@@ -143,4 +143,4 @@ $("#search-btn").on("click", function () {
         }
     };
     runQuery()
-});
+})
