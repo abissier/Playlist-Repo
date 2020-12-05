@@ -149,17 +149,3 @@ $("#search-btn").on("click", function () {
     };
     runQuery()
 });
-
-
-//=================== Delete button click-event =======================
-
-var Delete = document.getElementById("btn");
-console.log(Delete);
-
-Delete.addEventListener("click", function() {
-
-    $("lyricDisplay").empty();
-    $("tracklist").empty();
-    document.getElementById("artist-1").value = ""; 
-});
-
