@@ -78,8 +78,13 @@ function runQuery() {
         trackThree.setAttribute('id', responseOne.track[2].idTrack);
         trackFour.setAttribute('id', responseOne.track[3].idTrack);
         trackFive.setAttribute('id', responseOne.track[4].idTrack);
-    })
-};
+        
+        
+        musicVideo.setAttribute('source', responseOne.track[0].strMusicVid)
+        musicVideo.setAttribute('width','300');
+        musicVideo.setAttribute('height','200');
+
+});
 //Discography for artist 
 const discography = {
     "async": true,
@@ -109,6 +114,9 @@ trackFour.classList.add("tracks");
 const trackFive = document.createElement('p');
 trackFive.classList.add("tracks");
 
+//create element to hold music video
+const musicVideo = document.createElement('iframe')
+
 
 
 //appending LI elements to UL
@@ -117,6 +125,9 @@ tracklist.append(trackTwo)
 tracklist.append(trackThree)
 tracklist.append(trackFour)
 tracklist.append(trackFive)
+
+//append IFRAME element to trackFive
+musicVideo.append(trackFive)
 
 //search button
 $("#search-btn").on("click", function () {
@@ -134,4 +145,4 @@ $("#search-btn").on("click", function () {
         }
     };
     runQuery()
-});
+})
