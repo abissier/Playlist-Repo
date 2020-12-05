@@ -10,7 +10,7 @@ var lyricDis = document.getElementById("lyricDisplay");
 
 $("#tracklist").on("click", ".tracks", function() {
     var songID = event.target.id;
-    $("lyricDisplay").empty();
+    $("#lyricDisplay").empty();
     displaySongLyrics(songID); 
 })
 
@@ -40,6 +40,7 @@ $.ajax({
     }).then(function(LyricsResponse){
        //========pulls current song lyrics and displays to page =======
          var lyricText = LyricsResponse.message.body.lyrics.lyrics_body;
+         console.log(lyricText);
           var trimmedText = lyricText.slice(0, -70);
           console.log(trimmedText);
          var currentSongLyrics = document.createElement("p");
@@ -61,9 +62,15 @@ var topSongs = {};
 
 //get artist #1
 var artist = "";
-
+var trackOne = "";
+var trackTwo = "";
+var trackThree = "";
+var trackFour = "";
+var trackFive = "";
 
 function runQuery() {
+
+    generateSongs();
 
     $.ajax(topSongs).done(function (responseOne) {
         console.log(responseOne);
@@ -87,6 +94,7 @@ function runQuery() {
         musicVideo.setAttribute('height','200');
 
 });
+
 }
 //Discography for artist 
 const discography = {
@@ -104,17 +112,17 @@ $.ajax(discography).done(function (response) {
     console.log(response);
 });
 
-
+function generateSongs(){
 const tracklist= $('#tracklist');
-const trackOne = document.createElement('p');
+ trackOne = document.createElement('p');
 trackOne.classList.add("tracks");
-const trackTwo = document.createElement('p');
+ trackTwo = document.createElement('p');
 trackTwo.classList.add("tracks");
-const trackThree = document.createElement('p');
+ trackThree = document.createElement('p');
 trackThree.classList.add("tracks");
-const trackFour = document.createElement('p');
+ trackFour = document.createElement('p');
 trackFour.classList.add("tracks");
-const trackFive = document.createElement('p');
+ trackFive = document.createElement('p');
 trackFive.classList.add("tracks");
 
 //create element to hold music video
@@ -129,8 +137,11 @@ tracklist.append(trackThree)
 tracklist.append(trackFour)
 tracklist.append(trackFive)
 
+
 //append IFRAME element to trackFive
 musicVideo.append($('#videoBox'));
+
+}
 
 //search button
 $("#search-btn").on("click", function () {
@@ -149,3 +160,16 @@ $("#search-btn").on("click", function () {
     };
     runQuery()
 });
+
+//=================== Delete button click-event =======================
+
+var Delete = document.getElementById("btn");
+console.log(Delete);
+
+Delete.addEventListener("click", function() {
+
+    $("#lyricDisplay").empty();
+    $("#tracklist").empty();
+    document.getElementById("artist-1").value = ""; 
+});
+
