@@ -152,6 +152,25 @@ musicVideo.append($('#videoBox'));
 
 }
 
+
+function locallyStore() {
+    artist = $(`#artist-1`).val().trim();
+    const recentSearches =  $('#recently-searched')
+
+    if (artist) {
+            localStorage.setItem('Artist', artist);
+            location.reload()
+        }
+
+    for (let i=0; i<localStorage.length; i++) {
+        const key = localStorage.key(i)
+        const value = localStorage.getItem(key)
+
+        recentSearches.innerHTML += locallyStore.key;
+
+    }
+}
+
 //search button
 $("#search-btn").on("click", function () {
     artist = $(`#artist-1`).val().trim();
@@ -176,6 +195,7 @@ var Delete = document.getElementById("btn");
 console.log(Delete);
 
 Delete.addEventListener("click", function() {
+    locallyStore()
 
     $("#lyricDisplay").empty();
     $("#tracklist").empty();
