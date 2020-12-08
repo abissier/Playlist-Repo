@@ -68,7 +68,7 @@ $.ajax({
 //==========================  The SongDB  ==============================
 
 var topSongs = {};
-const recentSearches =  $('#recently-searched')
+
 
 
 //get artist #1
@@ -140,11 +140,11 @@ tracklist.append(trackFive)
 
 }
 
-
+//Local storage to hold searched Artist
 function locallyStore() {
     artist = $(`#artist-1`).val().trim();
+    const searched =  $('#recently-searched')
    
-
     if (artist) {
             localStorage.setItem('Artist', artist);
             //location.reload()
@@ -155,10 +155,13 @@ function locallyStore() {
         const value = localStorage.getItem(key)
 
         //console.log()
-        return(key)
+        
     }
+    //searched.setAttribute('placeholder', 'hello')
     
 }
+
+
 
 //search button
 $("#search-btn").on("click", function () {
@@ -176,7 +179,7 @@ $("#search-btn").on("click", function () {
         }
     };
     runQuery()
-
+    locallyStore()
 });
 
 //=================== Delete button click-event =======================
@@ -185,9 +188,7 @@ var Delete = document.getElementById("btn");
 console.log(Delete);
 
 Delete.addEventListener("click", function() {
-    locallyStore();
-    recentSearches.innerHTML += localStorage.artist
-
+   
     $("#lyricDisplay").empty();
     $("#tracklist").empty();
     document.getElementById("artist-1").value = ""; 
