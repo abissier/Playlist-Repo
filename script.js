@@ -98,7 +98,7 @@ function runQuery() {
         trackThree.setAttribute('id', responseOne.track[2].idTrack);
         trackFour.setAttribute('id', responseOne.track[3].idTrack);
         trackFive.setAttribute('id', responseOne.track[4].idTrack);
-
+   
 });
 
 }
@@ -130,6 +130,7 @@ trackThree.classList.add("tracks");
 trackFour.classList.add("tracks");
  trackFive = document.createElement('p');
 trackFive.classList.add("tracks");
+
 
 //appending LI elements to UL
 tracklist.append(trackOne)
