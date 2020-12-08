@@ -90,12 +90,16 @@ function runQuery() {
         trackFour.innerHTML = responseOne.track[3].strTrack;
         trackFive.innerHTML = responseOne.track[4].strTrack;
 
+        albumCover.innerHTML = responseOne.track[0].strTrackThumb;
 
         trackOne.setAttribute('id', responseOne.track[0].idTrack);
         trackTwo.setAttribute('id', responseOne.track[1].idTrack);
         trackThree.setAttribute('id', responseOne.track[2].idTrack);
         trackFour.setAttribute('id', responseOne.track[3].idTrack);
         trackFive.setAttribute('id', responseOne.track[4].idTrack);
+
+        albumCover.setAttribute('width', '100');
+        albumCover.setAttribute('height', '100');
         
         
         musicVideo.setAttribute('source', responseOne.track[0].strMusicVid);
@@ -137,7 +141,7 @@ trackFive.classList.add("tracks");
 //create element to hold music video
 const musicVideo = document.createElement('iframe');
 
-
+albumCover = document.createElement('img'); 
 
 //appending LI elements to UL
 tracklist.append(trackOne)
@@ -146,6 +150,7 @@ tracklist.append(trackThree)
 tracklist.append(trackFour)
 tracklist.append(trackFive)
 
+tracklist.append(albumCover)
 
 //append IFRAME element to trackFive
 musicVideo.append($('#videoBox'));
