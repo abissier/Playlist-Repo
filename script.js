@@ -68,6 +68,8 @@ $.ajax({
 //==========================  The SongDB  ==============================
 
 var topSongs = {};
+const recentSearches =  $('#recently-searched')
+
 
 //get artist #1
 var artist = "";
@@ -96,11 +98,6 @@ function runQuery() {
         trackThree.setAttribute('id', responseOne.track[2].idTrack);
         trackFour.setAttribute('id', responseOne.track[3].idTrack);
         trackFive.setAttribute('id', responseOne.track[4].idTrack);
-        
-        
-        musicVideo.setAttribute('source', responseOne.track[0].strMusicVid);
-        musicVideo.setAttribute('width','300');
-        musicVideo.setAttribute('height','200');
 
 });
 
@@ -134,11 +131,6 @@ trackFour.classList.add("tracks");
  trackFive = document.createElement('p');
 trackFive.classList.add("tracks");
 
-//create element to hold music video
-const musicVideo = document.createElement('iframe');
-
-
-
 //appending LI elements to UL
 tracklist.append(trackOne)
 tracklist.append(trackTwo)
@@ -146,29 +138,26 @@ tracklist.append(trackThree)
 tracklist.append(trackFour)
 tracklist.append(trackFive)
 
-
-//append IFRAME element to trackFive
-musicVideo.append($('#videoBox'));
-
 }
 
 
 function locallyStore() {
     artist = $(`#artist-1`).val().trim();
-    const recentSearches =  $('#recently-searched')
+   
 
     if (artist) {
             localStorage.setItem('Artist', artist);
-            location.reload()
+            //location.reload()
         }
 
     for (let i=0; i<localStorage.length; i++) {
         const key = localStorage.key(i)
         const value = localStorage.getItem(key)
 
-        recentSearches.innerHTML += locallyStore.key;
-
+        //console.log()
+        return(key)
     }
+    
 }
 
 //search button
@@ -187,6 +176,7 @@ $("#search-btn").on("click", function () {
         }
     };
     runQuery()
+
 });
 
 //=================== Delete button click-event =======================
@@ -195,7 +185,8 @@ var Delete = document.getElementById("btn");
 console.log(Delete);
 
 Delete.addEventListener("click", function() {
-    locallyStore()
+    locallyStore();
+    recentSearches.innerHTML += localStorage.artist
 
     $("#lyricDisplay").empty();
     $("#tracklist").empty();
