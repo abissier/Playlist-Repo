@@ -90,7 +90,7 @@ function runQuery() {
         trackFour.innerHTML = responseOne.track[3].strTrack;
         trackFive.innerHTML = responseOne.track[4].strTrack;
 
-        albumCover.innerHTML = responseOne.track[0].strTrackThumb;
+        //albumCover.innerHTML = responseOne.track[0].strTrackThumb;
 
         trackOne.setAttribute('id', responseOne.track[0].idTrack);
         trackTwo.setAttribute('id', responseOne.track[1].idTrack);
@@ -98,13 +98,12 @@ function runQuery() {
         trackFour.setAttribute('id', responseOne.track[3].idTrack);
         trackFive.setAttribute('id', responseOne.track[4].idTrack);
 
+        albumCover.setAttribute('src',  responseOne.track[0].strTrackThumb)
         albumCover.setAttribute('width', '100');
         albumCover.setAttribute('height', '100');
         
         
-        musicVideo.setAttribute('source', responseOne.track[0].strMusicVid);
-        musicVideo.setAttribute('width','300');
-        musicVideo.setAttribute('height','200');
+        
 
 });
 
