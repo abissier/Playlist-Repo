@@ -148,20 +148,18 @@ function locallyStore() {
    
     if (artist) {
             localStorage.setItem('Artist', artist);
-            //location.reload()
         }
 
     for (let i=0; i<localStorage.length; i++) {
         const key = localStorage.key(i)
         const value = localStorage.getItem(key)
 
-        //console.log()
-        
+        const recent = document.createElement('p')
+        recent.innerHTML=value
+        searched.append(recent)
     }
-    //searched.setAttribute('placeholder', 'hello')
     
 }
-
 
 
 //search button
