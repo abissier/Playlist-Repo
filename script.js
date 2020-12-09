@@ -179,7 +179,7 @@ function locallyStore() {
 
 }
 
-//search button
+//search button 
 $("#search-btn").on("click", function () {
     $("#tracklist").empty();
     artist = $(`#artist-1`).val().trim();
