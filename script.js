@@ -82,7 +82,14 @@ function runQuery() {
     generateSongs();
 
     $.ajax(topSongs).done(function (responseOne) {
-        console.log(responseOne);
+        console.log(responseOne.track);
+
+        if (!responseOne.track){
+          var noSong = document.createElement("p");
+          var tracklist = document.getElementById("tracklist");
+          noSong.innerHTML = "Artist not found!";
+          tracklist.append(noSong);
+        } else {
 
         trackOne.innerHTML = responseOne.track[0].strTrack;
         trackTwo.innerHTML = responseOne.track[1].strTrack;
@@ -101,9 +108,9 @@ function runQuery() {
         musicVideo.setAttribute('source', responseOne.track[0].strMusicVid);
         musicVideo.setAttribute('width','300');
         musicVideo.setAttribute('height','200');
-
+        }
 });
-
+    
 }
 //Discography for artist 
 const discography = {
@@ -154,6 +161,7 @@ musicVideo.append($('#videoBox'));
 
 //search button
 $("#search-btn").on("click", function () {
+    $("#tracklist").empty();
     artist = $(`#artist-1`).val().trim();
 
     //Top Songs for artist 
