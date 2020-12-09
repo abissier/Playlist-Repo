@@ -69,6 +69,8 @@ $.ajax({
 
 var topSongs = {};
 
+
+
 //get artist #1
 var artist = "";
 var trackOne = "";
@@ -103,12 +105,7 @@ function runQuery() {
         trackThree.setAttribute('id', responseOne.track[2].idTrack);
         trackFour.setAttribute('id', responseOne.track[3].idTrack);
         trackFive.setAttribute('id', responseOne.track[4].idTrack);
-        
-        
-        musicVideo.setAttribute('source', responseOne.track[0].strMusicVid);
-        musicVideo.setAttribute('width','300');
-        musicVideo.setAttribute('height','200');
-        }
+
 });
     
 }
@@ -141,10 +138,6 @@ trackFour.classList.add("tracks");
  trackFive = document.createElement('p');
 trackFive.classList.add("tracks");
 
-//create element to hold music video
-const musicVideo = document.createElement('iframe');
-
-
 
 //appending LI elements to UL
 tracklist.append(trackOne)
@@ -153,11 +146,28 @@ tracklist.append(trackThree)
 tracklist.append(trackFour)
 tracklist.append(trackFive)
 
-
-//append IFRAME element to trackFive
-musicVideo.append($('#videoBox'));
-
 }
+
+//Local storage to hold searched Artist
+function locallyStore() {
+    artist = $(`#artist-1`).val().trim();
+    const searched =  $('#recently-searched')
+   
+    if (artist) {
+            localStorage.setItem('Artist', artist);
+        }
+
+    for (let i=0; i<localStorage.length; i++) {
+        const key = localStorage.key(i)
+        const value = localStorage.getItem(key)
+
+        const recent = document.createElement('p')
+        recent.innerHTML=value
+        searched.append(recent)
+    }
+    
+}
+
 
 //search button
 $("#search-btn").on("click", function () {
@@ -176,6 +186,7 @@ $("#search-btn").on("click", function () {
         }
     };
     runQuery()
+    locallyStore()
 });
 
 //=================== Delete button click-event =======================
@@ -184,7 +195,7 @@ var Delete = document.getElementById("btn");
 console.log(Delete);
 
 Delete.addEventListener("click", function() {
-
+   
     $("#lyricDisplay").empty();
     $("#tracklist").empty();
     document.getElementById("artist-1").value = ""; 
