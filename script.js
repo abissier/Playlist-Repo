@@ -106,9 +106,14 @@ function runQuery() {
         trackFour.setAttribute('id', responseOne.track[3].idTrack);
         trackFive.setAttribute('id', responseOne.track[4].idTrack);
 
-});
-    
+        albumCover.setAttribute('src',  responseOne.track[0].strTrackThumb)
+        albumCover.setAttribute('width', '100');
+        albumCover.setAttribute('height', '100');
+
+     }
+   });
 }
+
 //Discography for artist 
 const discography = {
     "async": true,
@@ -127,6 +132,7 @@ $.ajax(discography).done(function (response) {
 
 function generateSongs(){
 const tracklist= $('#tracklist');
+const album = $('#album');
  trackOne = document.createElement('p');
 trackOne.classList.add("tracks");
  trackTwo = document.createElement('p');
@@ -138,6 +144,9 @@ trackFour.classList.add("tracks");
  trackFive = document.createElement('p');
 trackFive.classList.add("tracks");
 
+//create element to hold album cover
+albumCover = document.createElement('img'); 
+
 
 //appending LI elements to UL
 tracklist.append(trackOne)
@@ -145,6 +154,10 @@ tracklist.append(trackTwo)
 tracklist.append(trackThree)
 tracklist.append(trackFour)
 tracklist.append(trackFive)
+
+//appending album cover to 
+album.append(albumCover)
+
 
 }
 
