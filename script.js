@@ -211,6 +211,7 @@ Delete.addEventListener("click", function() {
    
     $("#lyricDisplay").empty();
     $("#tracklist").empty();
+    $("#album").empty();
     document.getElementById("artist-1").value = ""; 
 });
 
