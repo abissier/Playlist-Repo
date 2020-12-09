@@ -140,6 +140,7 @@ function locallyStore() {
 //onclick event for previous artist search 
 $(".searched").on("click", function (event) {
     prevSearch = event.target.innerText;
+    $("#album").empty();
 
     topSongs = {
         "async": true,
