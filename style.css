@@ -78,6 +78,10 @@ section {
  transform: scale(1.1);
 }
 
+.searched-box {
+    opacity: 0.8;
+}
+
 .tracks {
  margin-top: -5px;
  opacity: 0.8;
