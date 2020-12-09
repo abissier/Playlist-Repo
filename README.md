@@ -9,6 +9,20 @@ AS a user
 I want to find an artists top 5 songs and its lyrics 
 SO I can discover artists fan favorites
 ```
+
+### Demo
+To get started, enter an artists name into the search field. 
+
+![MusicMachine](./imgs/music-machine-demo-1.png)
+
+You will see the artists top songs along with an album cover displayed below or to the right of the search field depending on your device. Click on a song to reveal the lyrics.
+
+![MusicMachineTwo](./imgs/music-machine-demo-2.png)
+
+Clear your search by clicking on the yellow trash button.
+
+![MusicMachineThree](./imgs/music-machine-demo-3.png)
+
 ### Deployed link
 
 ```
