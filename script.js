@@ -69,6 +69,8 @@ $.ajax({
 
 var topSongs = {};
 
+
+
 //get artist #1
 var artist = "";
 var trackOne = "";
@@ -82,7 +84,14 @@ function runQuery() {
     generateSongs();
 
     $.ajax(topSongs).done(function (responseOne) {
-        console.log(responseOne);
+        console.log(responseOne.track);
+
+        if (!responseOne.track){
+          var noSong = document.createElement("p");
+          var tracklist = document.getElementById("tracklist");
+          noSong.innerHTML = "Artist not found!";
+          tracklist.append(noSong);
+        } else {
 
         trackOne.innerHTML = responseOne.track[0].strTrack;
         trackTwo.innerHTML = responseOne.track[1].strTrack;
@@ -101,7 +110,7 @@ function runQuery() {
         albumCover.setAttribute('height', '100');
         
 });
-
+    
 }
 //Discography for artist 
 const discography = {
@@ -133,6 +142,7 @@ trackFour.classList.add("tracks");
  trackFive = document.createElement('p');
 trackFive.classList.add("tracks");
 
+
 //create element to hold album cover
 albumCover = document.createElement('img'); 
 
@@ -143,13 +153,36 @@ tracklist.append(trackThree)
 tracklist.append(trackFour)
 tracklist.append(trackFive)
 
+
 //appending album cover to 
 album.append(albumCover)
 
 }
 
+//Local storage to hold searched Artist
+function locallyStore() {
+    artist = $(`#artist-1`).val().trim();
+    const searched =  $('#recently-searched')
+   
+    if (artist) {
+            localStorage.setItem('Artist', artist);
+        }
+  
+    for (let i=0; i<localStorage.length; i++) {
+        const key = localStorage.key(i)
+        const value = localStorage.getItem(key)
+
+        const recent = document.createElement('p')
+        recent.innerHTML=value
+        searched.append(recent)
+    }
+    
+}
+
+
 //search button
 $("#search-btn").on("click", function () {
+    $("#tracklist").empty();
     artist = $(`#artist-1`).val().trim();
 
     //Top Songs for artist 
@@ -164,6 +197,7 @@ $("#search-btn").on("click", function () {
         }
     };
     runQuery()
+    locallyStore()
 });
 
 //=================== Delete button click-event =======================
@@ -172,7 +206,7 @@ var Delete = document.getElementById("btn");
 console.log(Delete);
 
 Delete.addEventListener("click", function() {
-
+   
     $("#lyricDisplay").empty();
     $("#tracklist").empty();
     document.getElementById("artist-1").value = ""; 
