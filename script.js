@@ -90,8 +90,6 @@ function runQuery() {
         trackFour.innerHTML = responseOne.track[3].strTrack;
         trackFive.innerHTML = responseOne.track[4].strTrack;
 
-        //albumCover.innerHTML = responseOne.track[0].strTrackThumb;
-
         trackOne.setAttribute('id', responseOne.track[0].idTrack);
         trackTwo.setAttribute('id', responseOne.track[1].idTrack);
         trackThree.setAttribute('id', responseOne.track[2].idTrack);
@@ -102,9 +100,6 @@ function runQuery() {
         albumCover.setAttribute('width', '100');
         albumCover.setAttribute('height', '100');
         
-        
-        
-
 });
 
 }
@@ -126,6 +121,7 @@ $.ajax(discography).done(function (response) {
 
 function generateSongs(){
 const tracklist= $('#tracklist');
+const album = $('#album');
  trackOne = document.createElement('p');
 trackOne.classList.add("tracks");
  trackTwo = document.createElement('p');
@@ -137,22 +133,18 @@ trackFour.classList.add("tracks");
  trackFive = document.createElement('p');
 trackFive.classList.add("tracks");
 
-//create element to hold music video
-const musicVideo = document.createElement('iframe');
-
+//create element to hold album cover
 albumCover = document.createElement('img'); 
 
-//appending LI elements to UL
+//appending p elements to div
 tracklist.append(trackOne)
 tracklist.append(trackTwo)
 tracklist.append(trackThree)
 tracklist.append(trackFour)
 tracklist.append(trackFive)
 
-tracklist.append(albumCover)
-
-//append IFRAME element to trackFive
-musicVideo.append($('#videoBox'));
+//appending album cover to 
+album.append(albumCover)
 
 }
 
