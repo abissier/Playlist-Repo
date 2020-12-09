@@ -24,25 +24,25 @@ function runQuery() {
             tracklist.append(noSong);
         } else {
 
-        trackOne.innerHTML = responseOne.track[0].strTrack;
-        trackTwo.innerHTML = responseOne.track[1].strTrack;
-        trackThree.innerHTML = responseOne.track[2].strTrack;
-        trackFour.innerHTML = responseOne.track[3].strTrack;
-        trackFive.innerHTML = responseOne.track[4].strTrack;
+            trackOne.innerHTML = responseOne.track[0].strTrack;
+            trackTwo.innerHTML = responseOne.track[1].strTrack;
+            trackThree.innerHTML = responseOne.track[2].strTrack;
+            trackFour.innerHTML = responseOne.track[3].strTrack;
+            trackFive.innerHTML = responseOne.track[4].strTrack;
 
 
-        trackOne.setAttribute('id', responseOne.track[0].idTrack);
-        trackTwo.setAttribute('id', responseOne.track[1].idTrack);
-        trackThree.setAttribute('id', responseOne.track[2].idTrack);
-        trackFour.setAttribute('id', responseOne.track[3].idTrack);
-        trackFive.setAttribute('id', responseOne.track[4].idTrack);
+            trackOne.setAttribute('id', responseOne.track[0].idTrack);
+            trackTwo.setAttribute('id', responseOne.track[1].idTrack);
+            trackThree.setAttribute('id', responseOne.track[2].idTrack);
+            trackFour.setAttribute('id', responseOne.track[3].idTrack);
+            trackFive.setAttribute('id', responseOne.track[4].idTrack);
 
-        albumCover.setAttribute('src',  responseOne.track[0].strTrackThumb)
-        albumCover.setAttribute('width', '100');
-        albumCover.setAttribute('height', '100');
+            albumCover.setAttribute('src', responseOne.track[0].strTrackThumb)
+            albumCover.setAttribute('width', '100');
+            albumCover.setAttribute('height', '100');
 
-     }
-   });
+        }
+    });
 }
 
 //=========== click event pulls song ID and pushes to displaySongLyrics function ==========
@@ -111,9 +111,12 @@ function generateSongs() {
     tracklist.append(trackThree)
     tracklist.append(trackFour)
     tracklist.append(trackFive)
-  
-  //create element to hold album cover
-albumCover = document.createElement('img'); 
+
+    //create element to hold album cover
+    albumCover = document.createElement('img');
+
+    //appending album cover to 
+    album.append(albumCover)
 }
 
 //Local storage to hold searched Artist
@@ -158,22 +161,22 @@ $(".searched").on("click", function (event) {
 //Local storage to hold searched Artist
 function locallyStore() {
     artist = $(`#artist-1`).val().trim();
-    const searched =  $('#recently-searched')
-   
-    if (artist) {
-            localStorage.setItem('Artist', artist);
-        }
+    const searched = $('#recently-searched')
 
-    for (let i=0; i<localStorage.length; i++) {
+    if (artist) {
+        localStorage.setItem('Artist', artist);
+    }
+
+    for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i)
         const value = localStorage.getItem(key)
 
         const recent = document.createElement('div');
         recent.classList.add("searched-artist");
-        recent.innerHTML=value
+        recent.innerHTML = value
         searched.append(recent)
     }
-    
+
 }
 
 //search button
@@ -199,10 +202,10 @@ $("#search-btn").on("click", function () {
 //=================== Delete button =======================
 var Delete = document.getElementById("btn");
 
-Delete.addEventListener("click", function() {
+Delete.addEventListener("click", function () {
     $("#lyricDisplay").empty();
     $("#tracklist").empty();
     $("#album").empty();
-    document.getElementById("artist-1").value = ""; 
+    document.getElementById("artist-1").value = "";
 });
 
