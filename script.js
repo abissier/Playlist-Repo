@@ -10,12 +10,13 @@ var trackThree = "";
 var trackFour = "";
 var trackFive = "";
 
+// Top songs API request
 function runQuery() {
 
     generateSongs();
 
     $.ajax(topSongs).done(function (responseOne) {
-
+        //get top songs and append to page w songIDs
         if (!responseOne.track) {
             var noSong = document.createElement("p");
             var tracklist = document.getElementById("tracklist");
@@ -37,11 +38,7 @@ function runQuery() {
     });
 }
 
-//============ MusixMatch Info =================
-
-var lyricDis = document.getElementById("lyricDisplay");
-
-//=========== click event pulls song ID and pushes data to next function ==========
+//=========== click event pulls song ID and pushes to displaySongLyrics function ==========
 
 $("#tracklist").on("click", ".tracks", function () {
     var songID = event.target.id;
@@ -49,11 +46,8 @@ $("#tracklist").on("click", ".tracks", function () {
     displaySongLyrics(songID);
 })
 
-//======= runs API request to pull lyrics==================
+//======= Lyrics API request ==================
 function displaySongLyrics(songID) {
-
-    var MusixMatchKey = "f87914fabf3b652d6e3500c66b6259d6";
-    var MusixMatchURL = proxy + "https://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=f87914fabf3b652d6e3500c66b6259d6&track_id=" + songID;
 
     $.ajax({
         type: "GET",
@@ -63,54 +57,34 @@ function displaySongLyrics(songID) {
             format: "jsonp",
             callback: "jsonp_callback"
         },
-        url: "https://api.musixmatch.com/ws/1.1/track.lyrics.get",
+        url: "https://api.musixmatch.com/ws/1.1/track.lyrics.get?",
         dataType: "jsonp",
         jsonpCallback: 'jsonp_callback',
         contentType: 'application/json',
 
-
     }).then(function (LyricsResponse) {
-        //========pulls current song lyrics and displays to page =======
-        console.log(LyricsResponse.message.header.status_code);
+        //pulls current song lyrics and displays to page 
+        var lyricDis = document.getElementById("lyricDisplay");
 
         if (LyricsResponse.message.header.status_code == 404) {
             trimmedText = "No lyrics avalible"
         } else {
-            var lyricText = LyricsResponse.message.body.lyrics.lyrics_body
-            var trimmedText = lyricText.slice(0, -70);
-            console.log(trimmedText);
+            var trimmedText = LyricsResponse.message.body.lyrics.lyrics_body.slice(0, -70)
         }
         var currentSongLyrics = document.createElement("p");
         currentSongLyrics.innerHTML = trimmedText;
         lyricDis.append(currentSongLyrics);
 
-        //======== appends a copyright disclaimer ================
+        //append copyright disclaimer
         var disclaimer = document.createElement("span");
         disclaimer.innerHTML = "******* This Lyrics is NOT for Commercial use *******"
 
         if (LyricsResponse.message.header.status_code == 404) {
-
         } else {
             lyricDis.append(disclaimer);
         }
     });
 }
-
-//Discography for artist 
-// const discography = {
-//     "async": true,
-//     "crossDomain": true,
-//     "url": proxy + "https://theaudiodb.com/api/v1/json/523532/discography.php?s=" + artist,
-//     "method": "GET",
-//     "headers": {
-//         "x-rapidapi-key": "523532",
-//         "x-rapidapi-host": "theaudiodb.p.rapidapi.com"
-//     }
-// };
-
-// $.ajax(discography).done(function (response) {
-//     console.log(response);
-// });
 
 function generateSongs() {
     const tracklist = $('#tracklist');
@@ -160,3 +134,4 @@ Delete.addEventListener("click", function () {
     document.getElementById("artist-1").value = "";
 });
 
+//----
