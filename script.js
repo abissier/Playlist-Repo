@@ -107,6 +107,47 @@ function generateSongs() {
     tracklist.append(trackFive)
 }
 
+//Local storage to hold searched Artist
+function locallyStore() {
+    const searched = $('#recently-searched')
+
+    if (artist) {
+        localStorage.setItem('Artist', artist);
+    }
+
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i)
+        const value = localStorage.getItem(key)
+
+        const recent = document.createElement('div');
+        recent.classList.add("searched-artist");
+        recent.innerHTML = value;
+        searched.append(recent);
+    }
+}
+
+//onclick event for previous city search 
+$(".searched").on("click", function (event) {
+    prevSearch = event.target.innerText;
+
+    topSongs = {
+        "async": true,
+        "crossDomain": true,
+        url: proxy + 'https://theaudiodb.com/api/v1/json/523532/track-top10.php?s=' + prevSearch,
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "523532",
+            "x-rapidapi-host": "theaudiodb.p.rapidapi.com"
+        }
+    };
+    $("#lyricDisplay").empty();
+    $("#tracklist").empty();
+    document.getElementById("artist-1").value = "";
+    //run query w new url
+    runQuery();
+
+});
+
 //search button that runs audiodb query w user input
 $("#search-btn").on("click", function () {
     $("#tracklist").empty();
@@ -122,7 +163,8 @@ $("#search-btn").on("click", function () {
             "x-rapidapi-host": "theaudiodb.p.rapidapi.com"
         }
     };
-    runQuery()
+    runQuery();
+    locallyStore();
 });
 
 //=================== Delete button =======================
@@ -134,4 +176,3 @@ Delete.addEventListener("click", function () {
     document.getElementById("artist-1").value = "";
 });
 
-//----
