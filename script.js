@@ -23,23 +23,29 @@ function runQuery() {
             noSong.innerHTML = "Artist not found!";
             tracklist.append(noSong);
         } else {
-            trackOne.innerHTML = responseOne.track[0].strTrack;
-            trackTwo.innerHTML = responseOne.track[1].strTrack;
-            trackThree.innerHTML = responseOne.track[2].strTrack;
-            trackFour.innerHTML = responseOne.track[3].strTrack;
-            trackFive.innerHTML = responseOne.track[4].strTrack;
 
-            trackOne.setAttribute('id', responseOne.track[0].idTrack);
-            trackTwo.setAttribute('id', responseOne.track[1].idTrack);
-            trackThree.setAttribute('id', responseOne.track[2].idTrack);
-            trackFour.setAttribute('id', responseOne.track[3].idTrack);
-            trackFive.setAttribute('id', responseOne.track[4].idTrack);
-        }
-    });
+        trackOne.innerHTML = responseOne.track[0].strTrack;
+        trackTwo.innerHTML = responseOne.track[1].strTrack;
+        trackThree.innerHTML = responseOne.track[2].strTrack;
+        trackFour.innerHTML = responseOne.track[3].strTrack;
+        trackFive.innerHTML = responseOne.track[4].strTrack;
+
+
+        trackOne.setAttribute('id', responseOne.track[0].idTrack);
+        trackTwo.setAttribute('id', responseOne.track[1].idTrack);
+        trackThree.setAttribute('id', responseOne.track[2].idTrack);
+        trackFour.setAttribute('id', responseOne.track[3].idTrack);
+        trackFive.setAttribute('id', responseOne.track[4].idTrack);
+
+        albumCover.setAttribute('src',  responseOne.track[0].strTrackThumb)
+        albumCover.setAttribute('width', '100');
+        albumCover.setAttribute('height', '100');
+
+     }
+   });
 }
 
 //=========== click event pulls song ID and pushes to displaySongLyrics function ==========
-
 $("#tracklist").on("click", ".tracks", function () {
     var songID = event.target.id;
     $("#lyricDisplay").empty();
@@ -105,12 +111,14 @@ function generateSongs() {
     tracklist.append(trackThree)
     tracklist.append(trackFour)
     tracklist.append(trackFive)
+  
+  //create element to hold album cover
+albumCover = document.createElement('img'); 
 }
 
 //Local storage to hold searched Artist
 function locallyStore() {
     const searched = $('#recently-searched')
-
     if (artist) {
         localStorage.setItem('Artist', artist);
     }
@@ -126,7 +134,7 @@ function locallyStore() {
     }
 }
 
-//onclick event for previous city search 
+//onclick event for previous artist search 
 $(".searched").on("click", function (event) {
     prevSearch = event.target.innerText;
 
@@ -145,10 +153,30 @@ $(".searched").on("click", function (event) {
     document.getElementById("artist-1").value = "";
     //run query w new url
     runQuery();
-
 });
 
-//search button that runs audiodb query w user input
+//Local storage to hold searched Artist
+function locallyStore() {
+    artist = $(`#artist-1`).val().trim();
+    const searched =  $('#recently-searched')
+   
+    if (artist) {
+            localStorage.setItem('Artist', artist);
+        }
+
+    for (let i=0; i<localStorage.length; i++) {
+        const key = localStorage.key(i)
+        const value = localStorage.getItem(key)
+
+        const recent = document.createElement('div');
+        recent.classList.add("searched-artist");
+        recent.innerHTML=value
+        searched.append(recent)
+    }
+    
+}
+
+//search button
 $("#search-btn").on("click", function () {
     $("#tracklist").empty();
     artist = $(`#artist-1`).val().trim();
@@ -165,14 +193,16 @@ $("#search-btn").on("click", function () {
     };
     runQuery();
     locallyStore();
+
 });
 
 //=================== Delete button =======================
 var Delete = document.getElementById("btn");
 
-Delete.addEventListener("click", function () {
+Delete.addEventListener("click", function() {
     $("#lyricDisplay").empty();
     $("#tracklist").empty();
-    document.getElementById("artist-1").value = "";
+    $("#album").empty();
+    document.getElementById("artist-1").value = ""; 
 });
 
