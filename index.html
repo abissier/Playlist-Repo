@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./imgs/favicon-16x16.png">
     <title>Playlist Generator</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://www.jsdelivr.com/package/npm/bulma" rel="stylesheet">
+    <link href="http://www.jsdelivr.com/package/npm/bulma" rel="stylesheet">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Sansita+Swashed:wght@600&display=swap"
@@ -37,12 +37,10 @@
                     <button id="btn" type="submit" class="button is-rounded"><i class="far fa-trash-alt"></i></button>
                     <button id="search-btn" class="button is-rounded"><i class="fas fa-search"></i></button>
                 </div>
-                <h2>Recent Searches</h2>
-                <div class="input is-rounded" type="text" id="recently-searched" name="searches" placeholder=""></div>
+                <div class="searched" id="recently-searched">
+                    <h2>Recent Searches</h2>
+                </div>
             </div>
-            <figure class="image is-128x128">
-                <img src="">
-            </figure>
         </div>
         <!--and box to hold:-->
         <div class="output-field">
@@ -58,12 +56,10 @@
                 <h2>Lyrics</h2>
                 <div class="lyrics box" id="lyricDisplay"></div>
             </div>
-            <div class="album-cover">
+            <div>
                 <h2>Album Cover</h2>
-              <div id="album">
-                  
-               </div>
-            </div>   
+                <div id="album"></div>
+            </div>
         </div>
     </section>
     <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
